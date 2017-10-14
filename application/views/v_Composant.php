@@ -100,16 +100,24 @@ if($this->input->post('insert') != ''){
 }
 ?>
   <?php
-        if($this->input->post('update') != ''){
-/*Perform insert operation here*/
-    $code = $this->input->post('code');
-    $libelle = $this->input->post('libelle');
-    $data = array(
-        'CMP_CODE' => $code,
-        'CMP_LIBELLE' => $libelle,
-    );
-    $this->db->update('composant',$data);
-}
+$cnx = mysql_connect("localhost","root", "");
+$db = mysql_select_db("gsbd");
+$CMP_LIBELLE = $_POST[" libelle"];
+$code = $_POST["CMP_CODE"];
+$sql = "UPDATE composant 
+        SET libelle ='$libelle'
+            WHERE code = '$code'";
+$requete = mysql_query($sql,$cnx) or die(mysql_error());
+
+      if($requete)
+  {
+    echo("La modification à été correctement effectuée") ;
+  }
+  else
+  {
+    echo("La modification à échouée") ;
+  }
+  
 ?>
        
        </form>
