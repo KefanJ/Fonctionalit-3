@@ -32,7 +32,18 @@ class Ctrl_Gestion_Composant extends CI_Controller {
                 $data['titre'] = "Presentation composant";
                  $data['LaPresentationMedicament'] = $this->model_presentationMedicament->GetPresentationtMedicament();
                 $this->load->view('v_PresentationMedicament',$data); 
-            }        
+            }     
+            public function ModifierComposant()
+            {
+                $nomComposant = $_GET['nomComposant'];
+                $code = $_GET['code'];
+                // on récupère ici le nouveau nom ainsi que le code
+             
+                // A toi de jouer ici
+                // pour appeler le modele qui fait la modification UPDATE
+                
+                
+            }
             
     
 }

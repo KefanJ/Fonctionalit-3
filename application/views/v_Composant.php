@@ -10,29 +10,23 @@
       $(
               function()
                {
-            $('#lstComposant').change(function(){
-          $('#txtValeur').val($('#lstComposant').val());
-      });
-      
-      
-    }
-    
-    ),
-    
-    
-    $(
-        function()
-        {
-          $('#lstComposant').change(function(){
-              $('#txtValeur').val($('#lstComposant option:selected').text());
-          });  
-        },   
-       
+                    $('#lstComposant').change
+                    (
+                        function()
+                        {
+                            $('#txtValeur').val($('#lstComposant option:selected').text());
+                        }
+                    );
+                    $('#btn2').click
+                    (
+                        function()
+                        {
+                            ModifierComposant();
+                        }
+                    );
+                }
     );
- 
-
-              
-              
+     
               
         </script>
     </head>
