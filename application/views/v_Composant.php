@@ -10,21 +10,21 @@
       $(
               function()
                {
-            $('#lstComposant').change(function(){
-          $('#txtValeur').val($('#lstComposant').val());
-      });
-      
-      
+           $('#lst1').change(function(){
+          $('#lst2').val($('#lst1').val());
+     });
+     
+     
     }
-    
+   
     ),
     
     
     $(
         function()
         {
-          $('#lstComposant').change(function(){
-              $('#txtValeur').val($('#lstComposant option:selected').text());
+          $('#btn1').click(function(){
+              $('#lst2').val($('#lst1 option:selected').text());
           });  
         },   
        
@@ -39,20 +39,89 @@
     <body>
         
         <h2>Liste composant</h2>
-        <select id="lstComposant">
-            <?php
+        <select multiple="" id="lst1">
+            <?php 
+            
+           
+         
                 foreach ($LesComposants as $composant)
                     {
                         echo "<option id='opt1' value='".$composant->CMP_CODE."'>".$composant->CMP_LIBELLE."</option>";
                     }
+                   
+                    
             ?>
+        </select><br><br>
+        
+       <form method="post">
+    
+<!--    $data = array(
+        'title' => 'My title',
+        'name' => 'My Name',
+        'date' => 'My date'
+);
+$this->db->insert('mytable', $data);
+// Produces: INSERT INTO mytable (title, name, date) VALUES ('My title', 'My name', 'My date')-->
+
+    
+<tr>
+    <td>
+                <div class="form-group">
+                    <label for="Code">Code</label>
+                    <input type="textbox" id="code" name="code">
+                </div>
             
-        </select><br>
-        <input id="btn1" type="button" value="Ajouter">
-        <input id="btn2" type="button" value="Modifier">
-        <input id="btn3" type="button" value="Nouveau">
-        <input id="txtValeur" type="text" value="">
-        <input id="txtAjouter" type="text" value="">
+
+            <td>
+                <div class="form-group">
+                    <label for="Libelle">Libelle</label>
+                    <input type="textbox" id="libelle" name="libelle">
+                </div>
+            </td>     
+        </tr>
+
+        <tr>    
+            <td>
+               <input type="submit" name="insert" value="Ajouter" />
+                <input type="submit" name="update" value="Modifier" />
+            </td>
+            
+        </tr>           
+         <?php
+if($this->input->post('insert') != ''){
+/*Perform insert operation here*/
+    $code = $this->input->post('code');
+    $libelle = $this->input->post('libelle');
+    $data = array(
+        'CMP_CODE' => $code,
+        'CMP_LIBELLE' => $libelle,
+    );
+    $this->db->insert('composant',$data);
+}
+?>
+  <?php
+        if($this->input->post('update') != ''){
+/*Perform insert operation here*/
+    $code = $this->input->post('code');
+    $libelle = $this->input->post('libelle');
+    $data = array(
+        'CMP_CODE' => $code,
+        'CMP_LIBELLE' => $libelle,
+    );
+    $this->db->update('composant',$data);
+}
+?>
+       
+       </form>
+        
+        
+       
+   
+        
+      
+        
+        
+
         
         
     
