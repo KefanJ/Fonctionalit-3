@@ -10,8 +10,8 @@
       $(
               function()
                {
-           $('#lst1').change(function(){
-          $('#lst2').val($('#lst1').val());
+           $('#libelle').change(function(){
+          $('#lst1').val($('#libelle').val());
      });
      
      
@@ -23,12 +23,29 @@
     $(
         function()
         {
-          $('#btn1').click(function(){
-              $('#lst2').val($('#lst1 option:selected').text());
+          $('#update').click(function(){
+              $('#libelle').val($('#lst1 option:selected').text());
           });  
         },   
        
     );
+    
+     $('#lstComposant').change
+                     (
+                        function()
+                         {
+                             $('#libelle').val($('#lstComposant option:selected').text());
+                         }
+                    );
+                     $('#update').click
+                     (
+                         function()
+                         {
+                             ModifierComposant();
+                         }
+                     );
+                 
+      
  
 
               
@@ -39,7 +56,7 @@
     <body>
         
         <h2>Liste composant</h2>
-        <select multiple="" id="lst1">
+        <select multiple="" id="lstComposant">
             <?php 
             
            
@@ -99,26 +116,11 @@ if($this->input->post('insert') != ''){
     $this->db->insert('composant',$data);
 }
 ?>
-  <?php
-$cnx = mysql_connect("localhost","root", "");
-$db = mysql_select_db("gsbd");
-$CMP_LIBELLE = $_POST[" libelle"];
-$code = $_POST["CMP_CODE"];
-$sql = "UPDATE composant 
-        SET libelle ='$libelle'
-            WHERE code = '$code'";
-$requete = mysql_query($sql,$cnx) or die(mysql_error());
-
-      if($requete)
-  {
-    echo("La modification à été correctement effectuée") ;
-  }
-  else
-  {
-    echo("La modification à échouée") ;
-  }
+ 
   
-?>
+  
+
+        
        
        </form>
         

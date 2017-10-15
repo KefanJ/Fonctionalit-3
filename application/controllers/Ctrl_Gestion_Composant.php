@@ -33,6 +33,25 @@ class Ctrl_Gestion_Composant extends CI_Controller {
                  $data['LaPresentation_Medicament'] = $this->model_presentationMedicament->GetPresentationtMedicament();
                 $this->load->view('v_PresentationMedicament',$data); 
             }
+            public function ModifierComposant()
+            {
+               $nomCoposant = $_GET['nomCoposant'];
+               $code = $_GET['code'];
+               $data['lesComposants'] = $this->model_modifMedicament->GetModifierMedicament();
+               $this->load->view('v_Composant',$data);
+                
+                   
+            }
+
+
+
+
+
+
+
+
+
+
             public function afficherMedicament()
             {
                 $this->load->model('model_medicament');
