@@ -99,8 +99,8 @@ $this->db->insert('mytable', $data);
 
         <tr>    
             <td>
-               <input type="submit" name="insert" value="Insert" />
-                <input type="submit" name="update" value="Update" />
+               <input type="submit" name="insert" value="Ajouter" />
+                <input type="submit" name="update" value="Modifier"/>
             </td>
             
         </tr>           
