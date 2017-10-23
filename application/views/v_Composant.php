@@ -10,8 +10,8 @@
       $(
               function()
                {
-           $('#libelle').change(function(){
-          $('#lst1').val($('#libelle').val());
+           $('#lstComposant').change(function(){
+          $('#libelle').val($('#lstComposant').val());
      });
      
      
@@ -115,6 +115,10 @@ if($this->input->post('insert') != ''){
     );
     $this->db->insert('composant',$data);
     
+    header("refresh: 0;");
+
+}
+    
     
     if($this->input->post('update') != ''){
         $code = $this->input->post('code');
@@ -125,11 +129,15 @@ if($this->input->post('insert') != ''){
     );
         $this->db->set('CMP_CODE',$code);
         $this->db->set('CMP_LIBELLE',$libelle);
+        $this->db->where('CMP_CODE', $code);
         
          $this->db->update('composant',$data);
+         
+         header("refresh: 0;");
+
     
     }
-}
+
 ?>
         
  
