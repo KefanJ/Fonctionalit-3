@@ -99,8 +99,8 @@ $this->db->insert('mytable', $data);
 
         <tr>    
             <td>
-               <input type="submit" name="insert" value="Ajouter" />
-                <input type="submit" name="update" value="Modifier" />
+               <input type="submit" name="insert" value="Insert" />
+                <input type="submit" name="update" value="Update" />
             </td>
             
         </tr>           
@@ -114,8 +114,24 @@ if($this->input->post('insert') != ''){
         'CMP_LIBELLE' => $libelle,
     );
     $this->db->insert('composant',$data);
+    
+    
+    if($this->input->post('update') != ''){
+        $code = $this->input->post('code');
+        $libelle = $this->input->post('libelle');
+        $data = array(
+        'CMP_CODE' => $code,
+        'CMP_LIBELLE' => $libelle,
+    );
+        $this->db->set('CMP_CODE',$code);
+        $this->db->set('CMP_LIBELLE',$libelle);
+        
+         $this->db->update('composant',$data);
+    
+    }
 }
 ?>
+        
  
   
   
